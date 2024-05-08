@@ -1,10 +1,11 @@
+import '../entities/add_event_entity.dart';
 import '../repos/add_event_repository.dart';
 
-class AddEventUseCase{
+class DeleteEventUseCase{
   final TusksRepository _eventRepository;
 
-  AddEventUseCase(this._eventRepository);
-  Future <void> call(AddEventEntity input) async{
-    return await _eventRepository.addEvent(input);
+  DeleteEventUseCase(this._eventRepository);
+  Future <void> call(String? id) async{
+    return await _eventRepository.deleteEvent( id);
   }
 }

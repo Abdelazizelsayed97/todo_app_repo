@@ -4,7 +4,7 @@ class WebServicesControl {
   CollectionReference collection =
       FirebaseFirestore.instance.collection("Tusk");
 
-   Future<void> addToFireStore(
+  Future<void> addToFireStore(
       {required String title,
       required String status,
       required String date,

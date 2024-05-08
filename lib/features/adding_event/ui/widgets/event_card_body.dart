@@ -16,28 +16,34 @@ class EventCardBody extends StatelessWidget {
     return Container(
       height: 100.h,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(12.r)),
-      child: Row(
-        children: [
-          Column(
+      child: Card(
+        child: Padding(
+          padding:  EdgeInsets.all(8.0.r),
+          child: Row(
             children: [
-              Text(
-                'Flutter Study',
-                style: Styles.bold(fontSize: 24, color: Colors.black),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Flutter Study',
+                    style: Styles.bold(fontSize: 24, color: Colors.black),
+                  ),
+                  Text('State Management',
+                      style: Styles.normal(fontSize: 14, color: Colors.grey)),
+                  Text('State Management',
+                      style: Styles.light(fontSize: 12, color: Colors.grey[200])),
+                ],
               ),
-              Text('State Management',
-                  style: Styles.normal(fontSize: 14, color: Colors.grey)),
-              Text('State Management',
-                  style: Styles.light(fontSize: 12, color: Colors.grey[200])),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(status ?? '',
+                      style: Styles.light(fontSize: 12, color: Colors.grey[200]))
+                ],
+              )
             ],
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(status ?? '',
-                  style: Styles.light(fontSize: 12, color: Colors.grey[200]))
-            ],
-          )
-        ],
+        ),
       ),
     );
   }

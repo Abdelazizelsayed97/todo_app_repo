@@ -16,19 +16,13 @@ class StatusWidget extends StatelessWidget {
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(24.r)),
-            child: MaterialButton(disabledColor: Colors.grey,
+            clipBehavior: Clip.antiAlias,
+            decoration:
+                BoxDecoration(borderRadius: BorderRadius.circular(24.r)),
+            child: MaterialButton(
+              disabledColor: Colors.red,
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              hoverColor: Colors.red,
-              color: Colors.green,
-              
-            
-              // alignment: Alignment.center,
-              // decoration: BoxDecoration(
-              //   borderRadius: BorderRadius.all(
-              //     Radius.circular(24.r),
-              //   ),
-              // ),
+              color: Colors.grey[200],
               onPressed: () {},
               child: Text(AppConsts.statusList[index]),
             ),

@@ -12,13 +12,12 @@ class EventsWidget extends StatefulWidget {
 class _EventsWidgetState extends State<EventsWidget> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(height: double.infinity,
-      child: ListView.builder(
-
-
-        itemBuilder: (context, index) {
+    return ListView.builder(
+      itemCount: 2,
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
         return const EventCardBody();
-      },),
+      },
     );
   }
 }

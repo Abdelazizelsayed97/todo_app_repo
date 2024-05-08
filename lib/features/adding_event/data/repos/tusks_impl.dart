@@ -1,29 +1,35 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:second_task_todo_listapp/features/adding_event/domain/entities/add_event_entity.dart';
 import 'package:second_task_todo_listapp/features/adding_event/domain/repos/add_event_repository.dart';
 
-class TusksRepositoryImpl implements TusksRepository{
+import '../models/tusks_model_input.dart';
+
+class TusksRepositoryImpl implements TusksRepository {
+  CollectionReference collection =
+      FirebaseFirestore.instance.collection("Tusk");
+
   @override
-  Future<void> addEvent(AddEventEntity input) {
-    // TODO: implement addEvent
-    throw UnimplementedError();
+  Future<void> addEvent(TuskEntity input) async {
+    final data = TaskModelInput.fromInput(input).toJson();
+
+    await collection.add(data);
+    await collection;
   }
 
   @override
-  Future<void> deleteEvent() {
-    // TODO: implement deleteEvent
-    throw UnimplementedError();
+  Future<void> deleteEvent(String? id) async {
+    await collection.doc(id).delete();
   }
 
   @override
-  Future<void> editEvent() {
-    // TODO: implement editEvent
-    throw UnimplementedError();
+  Future<void> editEvent({TuskEntity? input, String? collectionPath}) async {
+    collection.doc(collectionPath);
   }
 
   @override
-  Future<List<AddEventEntity>> getEvent() {
-    // TODO: implement getEvent
-    throw UnimplementedError();
+  Stream<List<QueryDocumentSnapshot<TuskEntity>>> getEvent() {
+    collection.snapshots();
+    return getEvent();
   }
-
 }

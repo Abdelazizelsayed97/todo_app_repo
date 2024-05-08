@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/helper/spacing.dart';
 import '../../../../core/text_styles/text_styles.dart';
+import '../widgets/event_widget.dart';
+import '../widgets/stutus_widget.dart';
+import 'add_event_page.dart';
 
 class TusksPage extends StatefulWidget {
   const TusksPage({super.key});
@@ -14,6 +18,16 @@ class _TusksPageState extends State<TusksPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>  AddEventPage(),
+              ));
+        },
+        child: const Icon(Icons.add),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(12.0.r),
@@ -28,9 +42,9 @@ class _TusksPageState extends State<TusksPage> {
                     color: Colors.black,
                   ),
                 ),
-                // const StatusWidget(),
-                // verticalSpace(20),
-                // const EventsWidget()
+                const StatusWidget(),
+                verticalSpace(20),
+                const EventsWidget()
               ],
             ),
           ),

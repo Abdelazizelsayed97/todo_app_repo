@@ -1,13 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:second_task_todo_listapp/features/adding_event/domain/entities/add_event_entity.dart';
-import 'package:second_task_todo_listapp/features/adding_event/domain/repos/add_event_repository.dart';
+import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../../domain/entities/add_event_entity.dart';
+import '../../domain/repos/task_repository.dart';
 import '../models/tusks_model_input.dart';
 
 class TusksRepositoryImpl implements TusksRepository {
   CollectionReference collection =
       FirebaseFirestore.instance.collection("Tusk");
+
+  TusksRepositoryImpl();
 
   @override
   Future<void> addEvent(TuskEntity input) async {
@@ -28,8 +31,21 @@ class TusksRepositoryImpl implements TusksRepository {
   }
 
   @override
-  Stream<List<QueryDocumentSnapshot<TuskEntity>>> getEvent() {
-    collection.snapshots();
-    return getEvent();
+  Stream<List<TuskEntity>> getTasks() {
+
+    return collection.snapshots().map((querySnapshot) {
+      print('jknsdlgfs;');
+      return querySnapshot.docs.map((doc) {
+        return TuskEntity(
+          id: doc.id,
+          title: doc['title'],
+          date: doc['date'],
+          status: doc['status'],
+          eventContext: doc['eventContext'],
+        );
+      }).toList();
+
+    });
   }
+
 }

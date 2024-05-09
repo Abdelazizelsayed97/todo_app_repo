@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:second_task_todo_listapp/features/adding_event/domain/entities/add_event_entity.dart';
+
+import '../../domain/entities/add_event_entity.dart';
 
 part 'tusks_model_input.g.dart';
 
@@ -13,7 +14,7 @@ class TaskModelInput {
   TaskModelInput({this.title, this.eventContext, this.date, this.status});
 
   factory TaskModelInput.fromJson(Map<String, dynamic> json) =>
-      _$TaskModelFromJson(json);
+      _$TaskModelInputFromJson(json);
 
   factory TaskModelInput.fromInput(TuskEntity input) {
     return TaskModelInput(
@@ -23,5 +24,5 @@ class TaskModelInput {
         status: input.status);
   }
 
-  Map<String, dynamic> toJson() => _$TaskModelToJson(this);
+  Map<String, dynamic> toJson() => _$TaskModelInputToJson(this);
 }

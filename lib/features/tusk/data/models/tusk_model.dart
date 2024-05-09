@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:second_task_todo_listapp/features/adding_event/domain/entities/add_event_entity.dart';
 
 part 'tusk_model.g.dart';
 @JsonSerializable()

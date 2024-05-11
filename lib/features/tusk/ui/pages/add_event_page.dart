@@ -47,6 +47,7 @@ class _AddEventPageState extends State<AddEventPage> {
       },
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
+          child: Icon(widget.pageTitle == 'Add Event'? Icons.save: Icons.edit),
           onPressed: () {
             if (widget.pageTitle == 'Add Event') {
               _addTusk();

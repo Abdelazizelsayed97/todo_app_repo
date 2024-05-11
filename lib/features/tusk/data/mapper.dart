@@ -3,8 +3,8 @@ import 'models/tusk_model.dart';
 
 
 extension ConvertTuskModelToTaskEntity on TaskModel {
-  TuskEntity mapTusks() {
-    return TuskEntity(
+  TaskEntity mapTusks() {
+    return TaskEntity(
       title: title ?? '',
       eventContext: eventContext ?? '',
       date: date ?? '',

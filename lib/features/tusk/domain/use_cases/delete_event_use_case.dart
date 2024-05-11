@@ -1,4 +1,3 @@
-import '../entities/add_event_entity.dart';
 import '../repos/task_repository.dart';
 
 class DeleteEventUseCase{

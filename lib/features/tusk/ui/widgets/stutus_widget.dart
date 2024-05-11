@@ -15,8 +15,6 @@ class StatusWidget extends StatelessWidget {
       child: TabBar(
         labelColor: Colors.blue,
         unselectedLabelColor: Colors.grey,
-
-        // isScrollable: true,
         controller: tabController,
         tabs: [
           Tab(text: AppConsts.statusList[0]),

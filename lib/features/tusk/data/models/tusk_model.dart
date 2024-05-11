@@ -7,8 +7,10 @@ class TaskModel {
   final String? eventContext;
   final String? date;
   final String? status;
+  final String? id;
 
-  TaskModel({this.title, this.eventContext, this.date, this.status});
+
+  TaskModel( {this.id,this.title, this.eventContext, this.date, this.status});
 
   factory TaskModel.fromJson(Map<String, dynamic> json)=>  _$TaskModelFromJson(json);
 

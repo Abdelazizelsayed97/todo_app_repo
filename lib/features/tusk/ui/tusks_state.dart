@@ -21,7 +21,7 @@ class TusksState with _$TusksState {
   const factory TusksState.getLoading() = GetLoading;
   const factory TusksState.getSuccess(
       {String? message,
-     required Stream<List<TuskEntity>> data}) = GetSuccess;
+     required Stream<List<TaskEntity>> data}) = GetSuccess;
   const factory TusksState.getFailure(String message) = GetFailure;
 
 

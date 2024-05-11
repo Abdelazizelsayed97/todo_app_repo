@@ -10,18 +10,21 @@ class TaskModelInput {
   final String? eventContext;
   final String? date;
   final String? status;
+  final String? id;
 
-  TaskModelInput({this.title, this.eventContext, this.date, this.status});
+  TaskModelInput(
+      {this.id, this.title, this.eventContext, this.date, this.status});
 
   factory TaskModelInput.fromJson(Map<String, dynamic> json) =>
       _$TaskModelInputFromJson(json);
 
-  factory TaskModelInput.fromInput(TuskEntity input) {
+  factory TaskModelInput.fromInput(TaskEntity input) {
     return TaskModelInput(
         title: input.title,
         date: input.date,
         eventContext: input.eventContext,
-        status: input.status);
+        status: input.status,
+        id: input.id);
   }
 
   Map<String, dynamic> toJson() => _$TaskModelInputToJson(this);

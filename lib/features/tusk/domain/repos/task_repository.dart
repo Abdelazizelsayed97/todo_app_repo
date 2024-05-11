@@ -1,15 +1,14 @@
 import 'dart:async';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../entities/add_event_entity.dart';
 
 abstract class TusksRepository {
-  Future<void> addEvent(TuskEntity input);
+  Future<void> addEvent(TaskEntity input);
 
   Future<void> deleteEvent(String? id);
 
-  Future<void> editEvent({TuskEntity? input, String? collectionPath});
+  Future<void> editEvent({TaskEntity? input, String? collectionPath});
 
-  Stream<List<TuskEntity>> getTasks();
+  Stream<List<TaskEntity>> getTasks();
 }

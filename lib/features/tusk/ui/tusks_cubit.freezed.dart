@@ -29,7 +29,7 @@ mixin _$TusksState {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) =>
@@ -47,7 +47,7 @@ mixin _$TusksState {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) =>
@@ -65,7 +65,7 @@ mixin _$TusksState {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -192,7 +192,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -213,7 +213,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -234,7 +234,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -363,7 +363,7 @@ class _$AddLoadingImpl implements AddLoading {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -384,7 +384,7 @@ class _$AddLoadingImpl implements AddLoading {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -405,7 +405,7 @@ class _$AddLoadingImpl implements AddLoading {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -560,7 +560,7 @@ class _$AddSuccessImpl implements AddSuccess {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -581,7 +581,7 @@ class _$AddSuccessImpl implements AddSuccess {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -602,7 +602,7 @@ class _$AddSuccessImpl implements AddSuccess {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -762,7 +762,7 @@ class _$AddFailureImpl implements AddFailure {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -783,7 +783,7 @@ class _$AddFailureImpl implements AddFailure {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -804,7 +804,7 @@ class _$AddFailureImpl implements AddFailure {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -938,7 +938,7 @@ class _$EditLoadingImpl implements EditLoading {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -959,7 +959,7 @@ class _$EditLoadingImpl implements EditLoading {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -980,7 +980,7 @@ class _$EditLoadingImpl implements EditLoading {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -1135,7 +1135,7 @@ class _$EditSuccessImpl implements EditSuccess {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -1156,7 +1156,7 @@ class _$EditSuccessImpl implements EditSuccess {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -1177,7 +1177,7 @@ class _$EditSuccessImpl implements EditSuccess {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -1337,7 +1337,7 @@ class _$EditFailureImpl implements EditFailure {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -1358,7 +1358,7 @@ class _$EditFailureImpl implements EditFailure {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -1379,7 +1379,7 @@ class _$EditFailureImpl implements EditFailure {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -1513,7 +1513,7 @@ class _$DeleteLoadingImpl implements DeleteLoading {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -1534,7 +1534,7 @@ class _$DeleteLoadingImpl implements DeleteLoading {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -1555,7 +1555,7 @@ class _$DeleteLoadingImpl implements DeleteLoading {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -1710,7 +1710,7 @@ class _$DeleteSuccessImpl implements DeleteSuccess {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -1731,7 +1731,7 @@ class _$DeleteSuccessImpl implements DeleteSuccess {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -1752,7 +1752,7 @@ class _$DeleteSuccessImpl implements DeleteSuccess {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -1912,7 +1912,7 @@ class _$DeleteFailureImpl implements DeleteFailure {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -1933,7 +1933,7 @@ class _$DeleteFailureImpl implements DeleteFailure {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -1954,7 +1954,7 @@ class _$DeleteFailureImpl implements DeleteFailure {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -2088,7 +2088,7 @@ class _$GetLoadingImpl implements GetLoading {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -2109,7 +2109,7 @@ class _$GetLoadingImpl implements GetLoading {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -2130,7 +2130,7 @@ class _$GetLoadingImpl implements GetLoading {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -2216,7 +2216,7 @@ abstract class _$$GetSuccessImplCopyWith<$Res> {
           _$GetSuccessImpl value, $Res Function(_$GetSuccessImpl) then) =
       __$$GetSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? message, Stream<List<TuskEntity>> data});
+  $Res call({String? message, Stream<List<TaskEntity>> data});
 }
 
 /// @nodoc
@@ -2241,7 +2241,7 @@ class __$$GetSuccessImplCopyWithImpl<$Res>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as Stream<List<TuskEntity>>,
+              as Stream<List<TaskEntity>>,
     ));
   }
 }
@@ -2254,7 +2254,7 @@ class _$GetSuccessImpl implements GetSuccess {
   @override
   final String? message;
   @override
-  final Stream<List<TuskEntity>> data;
+  final Stream<List<TaskEntity>> data;
 
   @override
   String toString() {
@@ -2293,7 +2293,7 @@ class _$GetSuccessImpl implements GetSuccess {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -2314,7 +2314,7 @@ class _$GetSuccessImpl implements GetSuccess {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -2335,7 +2335,7 @@ class _$GetSuccessImpl implements GetSuccess {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),
@@ -2414,10 +2414,10 @@ class _$GetSuccessImpl implements GetSuccess {
 abstract class GetSuccess implements TusksState {
   const factory GetSuccess(
       {final String? message,
-      required final Stream<List<TuskEntity>> data}) = _$GetSuccessImpl;
+      required final Stream<List<TaskEntity>> data}) = _$GetSuccessImpl;
 
   String? get message;
-  Stream<List<TuskEntity>> get data;
+  Stream<List<TaskEntity>> get data;
   @JsonKey(ignore: true)
   _$$GetSuccessImplCopyWith<_$GetSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2498,7 +2498,7 @@ class _$GetFailureImpl implements GetFailure {
     required TResult Function(String message) deleteSuccess,
     required TResult Function(String message) deleteFailure,
     required TResult Function() getLoading,
-    required TResult Function(String? message, Stream<List<TuskEntity>> data)
+    required TResult Function(String? message, Stream<List<TaskEntity>> data)
         getSuccess,
     required TResult Function(String message) getFailure,
   }) {
@@ -2519,7 +2519,7 @@ class _$GetFailureImpl implements GetFailure {
     TResult? Function(String message)? deleteSuccess,
     TResult? Function(String message)? deleteFailure,
     TResult? Function()? getLoading,
-    TResult? Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult? Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult? Function(String message)? getFailure,
   }) {
@@ -2540,7 +2540,7 @@ class _$GetFailureImpl implements GetFailure {
     TResult Function(String message)? deleteSuccess,
     TResult Function(String message)? deleteFailure,
     TResult Function()? getLoading,
-    TResult Function(String? message, Stream<List<TuskEntity>> data)?
+    TResult Function(String? message, Stream<List<TaskEntity>> data)?
         getSuccess,
     TResult Function(String message)? getFailure,
     required TResult orElse(),

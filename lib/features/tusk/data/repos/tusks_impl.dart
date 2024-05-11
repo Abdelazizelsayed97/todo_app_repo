@@ -13,39 +13,51 @@ class TusksRepositoryImpl implements TusksRepository {
   TusksRepositoryImpl();
 
   @override
-  Future<void> addEvent(TuskEntity input) async {
+  Future<void> addEvent(TaskEntity input) async {
     final data = TaskModelInput.fromInput(input).toJson();
-
-    await collection.add(data);
-    await collection;
+    if (data.isEmpty) {
+      throw Exception();
+    } else {
+      await collection.add(data);
+    }
   }
 
   @override
   Future<void> deleteEvent(String? id) async {
-    await collection.doc(id).delete();
+    if (id == null) {
+      throw Exception();
+    } else {
+      await collection.doc(id).delete();
+    }
   }
 
   @override
-  Future<void> editEvent({TuskEntity? input, String? collectionPath}) async {
-    collection.doc(collectionPath);
+  Future<void> editEvent({TaskEntity? input, String? collectionPath}) async {
+    if (input == null || collectionPath == null) {
+      throw Exception();
+    } else {
+      final data = TaskModelInput.fromInput(input).toJson();
+      await collection.doc(collectionPath).update(data);
+    }
   }
 
   @override
-  Stream<List<TuskEntity>> getTasks() {
-
-    return collection.snapshots().map((querySnapshot) {
-      print('jknsdlgfs;');
-      return querySnapshot.docs.map((doc) {
-        return TuskEntity(
-          id: doc.id,
-          title: doc['title'],
-          date: doc['date'],
-          status: doc['status'],
-          eventContext: doc['eventContext'],
-        );
-      }).toList();
-
-    });
+  Stream<List<TaskEntity>> getTasks() {
+    final data = collection.snapshots();
+    if (data.isBroadcast) {
+      return data.map((querySnapshot) {
+        return querySnapshot.docs.map((doc) {
+          return TaskEntity(
+            id: doc.id,
+            title: doc['title'],
+            date: doc['date'],
+            status: doc['status'],
+            eventContext: doc['eventContext'],
+          );
+        }).toList();
+      });
+    } else {
+      throw Exception();
+    }
   }
-
 }

@@ -22,7 +22,7 @@ class TusksCubit extends Cubit<TusksState> {
       this._editEventUseCase, this._getEventUseCase)
       : super(const TusksState.initial());
 
-  Future<void> addEvent(TuskEntity input) async {
+  Future<void> addEvent(TaskEntity input) async {
     final result = await _addEventUseCase.call(input);
     try {
       emit(const TusksState.addLoading());
@@ -42,8 +42,8 @@ class TusksCubit extends Cubit<TusksState> {
     }
   }
 
-  Future<void> editEvent(TuskEntity input, String collectionPath) async {
-    final result = await _editEventUseCase.call(input, collectionPath);
+  Future<void> editEvent({required TaskEntity input, required String collectionPath}) async {
+    final result = await _editEventUseCase.call(input: input, collectionPath: collectionPath);
     try {
       emit(const TusksState.editLoading());
       emit(const TusksState.editSuccess('Tusk edited successfully'));

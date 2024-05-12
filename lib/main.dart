@@ -31,7 +31,7 @@ class ToDoApp extends StatelessWidget {
         create: (context) => TusksCubit(getIt(), getIt(), getIt(), getIt()),
         child: const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: TusksPage(),
+          home: TasksPage(),
         ),
       ),
     );

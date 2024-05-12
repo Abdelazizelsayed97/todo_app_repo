@@ -12,15 +12,14 @@ import '../tusks_cubit.dart';
 import '../widgets/stutus_widget.dart';
 import 'add_event_page.dart';
 
-
-class TusksPage extends StatefulWidget {
-  const TusksPage({super.key});
+class TasksPage extends StatefulWidget {
+  const TasksPage({super.key});
 
   @override
-  State<TusksPage> createState() => _TusksPageState();
+  State<TasksPage> createState() => _TasksPageState();
 }
 
-class _TusksPageState extends State<TusksPage>
+class _TasksPageState extends State<TasksPage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
 
@@ -35,36 +34,49 @@ class _TusksPageState extends State<TusksPage>
     context.read<TusksCubit>().getEvents();
   }
 
+  Future<void> _deleteItem(String documentId) async {
+    BlocProvider.of<TusksCubit>(context).deleteEvent(documentId);
+  }
+
+  @override
+  void deactivate() {
+    tabController.dispose();
+    super.deactivate();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TusksCubit, TusksState>(
+    return BlocConsumer<TusksCubit, TusksState>(
+      listener: (context, state) {
+        if (state is DeleteSuccess) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.message)));
+        }
+        if (state is AddSuccess) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.message ?? '')));
+        }
+      },
       builder: (context, state) {
-        if (state is GetLoading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (state is GetSuccess) {
-          // final data = state.data.first.then((value) => value.map((e) => ))
+        if (state is GetSuccess) {
           return StreamBuilder(
             stream: state.data,
             builder: (context, listOfTusksState) {
-              print('=====> ${listOfTusksState.data}');
-              print('=====> ${listOfTusksState.runtimeType}');
-
               return Scaffold(
                 floatingActionButton: FloatingActionButton(
                   onPressed: () {
                     Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  AddEventPage(data: listOfTusksState.data, pageTitle: 'Add Event',),
+                          builder: (context) => AddEventPage(
+                            data: listOfTusksState.data,
+                            pageTitle: 'Add Event',
+                          ),
                         ));
                   },
                   child: const Icon(Icons.add),
                 ),
-                body: DefaultTabController(
-                  initialIndex: 0,
-                  length: 4,
+                body: SafeArea(
                   child: SingleChildScrollView(
                     child: Padding(
                       padding: EdgeInsets.all(12.0.r),
@@ -86,15 +98,24 @@ class _TusksPageState extends State<TusksPage>
                             SizedBox(
                               height: MediaQuery.of(context).size.height,
                               child: TabBarView(
-                                  physics: const NeverScrollableScrollPhysics(),
                                   controller: tabController,
                                   children: [
-                                    AllTasksPage(data: listOfTusksState.data),
+                                    AllTasksPage(
+                                      data: listOfTusksState.data ?? [],
+                                      onDelete: (index) => _deleteItem(index),
+                                    ),
                                     UrgentTasksPage(
                                       data: listOfTusksState.data,
+                                      onDelete: (index) => _deleteItem(index),
                                     ),
-                                    CompletedTasksPage(data: listOfTusksState.data,),
-                                    UnCompletedTasksPage(data: listOfTusksState.data,),
+                                    CompletedTasksPage(
+                                      data: listOfTusksState.data,
+                                      onDelete: (index) => _deleteItem(index),
+                                    ),
+                                    UnCompletedTasksPage(
+                                      data: listOfTusksState.data,
+                                      onDelete: (index) => _deleteItem(index),
+                                    ),
                                   ]),
                             ),
                           ],
@@ -106,8 +127,18 @@ class _TusksPageState extends State<TusksPage>
               );
             },
           );
+        } else if (state is GetFailure) {
+          return Scaffold(
+            body: Center(
+              child: Text(state.message),
+            ),
+          );
         }
-        return const SizedBox.shrink();
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.red,
+          ),
+        );
       },
     );
   }

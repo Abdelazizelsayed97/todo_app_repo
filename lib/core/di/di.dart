@@ -17,7 +17,6 @@ class AppDi {
     getIt.registerSingleton<TusksRepository>(
       TusksRepositoryImpl(),
     );
-    // getIt.registerSingleton<FirebaseFirestore>(FirebaseFirestore.instance);
     getIt.registerLazySingleton<AddEventUseCase>(
       () => AddEventUseCase(getIt<TusksRepository>()),
     );

@@ -23,7 +23,7 @@ class TusksCubit extends Cubit<TusksState> {
       : super(const TusksState.initial());
 
   Future<void> addEvent(TaskEntity input) async {
-    final result = await _addEventUseCase.call(input);
+    await _addEventUseCase.call(input);
     try {
       emit(const TusksState.addLoading());
       emit(const TusksState.addSuccess('Tusk added successfully'));
@@ -32,18 +32,20 @@ class TusksCubit extends Cubit<TusksState> {
     }
   }
 
-  Future<void> deleteEvent(String? id) async {
-    final result = await _deleteEventUseCase.call(id ?? "");
+  Future<void> deleteEvent(String id) async {
     try {
-      emit(const TusksState.deleteLoading());
+      await _deleteEventUseCase.execute(id);
+      final lastState = state as GetSuccess;
       emit(const TusksState.deleteSuccess('Tusk deleted successfully'));
+      emit(TusksState.getSuccess(data: lastState.data));
     } catch (e) {
       emit(const TusksState.deleteFailure('Failed to deleted event'));
     }
   }
 
-  Future<void> editEvent({required TaskEntity input, required String collectionPath}) async {
-    final result = await _editEventUseCase.call(input: input, collectionPath: collectionPath);
+  Future<void> editEvent(
+      {required TaskEntity input, required String collectionPath}) async {
+    await _editEventUseCase.call(input: input, collectionPath: collectionPath);
     try {
       emit(const TusksState.editLoading());
       emit(const TusksState.editSuccess('Tusk edited successfully'));
@@ -54,8 +56,6 @@ class TusksCubit extends Cubit<TusksState> {
 
   void getEvents() async {
     final result = _getEventUseCase.call();
-    print(
-        'this is result of getEvents >>>>${result.map((event) => event.map((e) => e.status.toString()))}');
     try {
       emit(const TusksState.getLoading());
 

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'tusk_model.g.dart';
+
 @JsonSerializable()
 class TaskModel {
   final String? title;
@@ -9,15 +10,8 @@ class TaskModel {
   final String? status;
   final String? id;
 
+  TaskModel({this.id, this.title, this.eventContext, this.date, this.status});
 
-  TaskModel( {this.id,this.title, this.eventContext, this.date, this.status});
-
-  factory TaskModel.fromJson(Map<String, dynamic> json)=>  _$TaskModelFromJson(json);
-
-  Map<String, dynamic> toJson() => {
-    'title': title,
-    'eventContext': eventContext,
-    'date': date,
-    'status': status,
-  };
+  factory TaskModel.fromJson(Map<String, dynamic> json) =>
+      _$TaskModelFromJson(json);
 }

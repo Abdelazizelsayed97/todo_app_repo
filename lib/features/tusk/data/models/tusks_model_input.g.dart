@@ -8,6 +8,7 @@ part of 'tusks_model_input.dart';
 
 TaskModelInput _$TaskModelInputFromJson(Map<String, dynamic> json) =>
     TaskModelInput(
+      id: json['id'] as String?,
       title: json['title'] as String?,
       eventContext: json['eventContext'] as String?,
       date: json['date'] as String?,
@@ -20,4 +21,5 @@ Map<String, dynamic> _$TaskModelInputToJson(TaskModelInput instance) =>
       'eventContext': instance.eventContext,
       'date': instance.date,
       'status': instance.status,
+      'id': instance.id,
     };

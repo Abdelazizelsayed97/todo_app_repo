@@ -7,6 +7,7 @@ part of 'tusk_model.dart';
 // **************************************************************************
 
 TaskModel _$TaskModelFromJson(Map<String, dynamic> json) => TaskModel(
+      id: json['id'] as String?,
       title: json['title'] as String?,
       eventContext: json['eventContext'] as String?,
       date: json['date'] as String?,
@@ -18,4 +19,5 @@ Map<String, dynamic> _$TaskModelToJson(TaskModel instance) => <String, dynamic>{
       'eventContext': instance.eventContext,
       'date': instance.date,
       'status': instance.status,
+      'id': instance.id,
     };

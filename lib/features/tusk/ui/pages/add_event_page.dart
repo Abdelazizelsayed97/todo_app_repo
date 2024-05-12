@@ -15,11 +15,13 @@ enum StatusEnum { uncompleted, completed, urgent }
 const int index = 0;
 
 class AddEventPage extends StatefulWidget {
-  AddEventPage({super.key, required this.pageTitle, this.data, this.id});
+  AddEventPage(
+      {super.key, required this.pageTitle, this.data, this.id, this.editData});
 
   final String pageTitle;
   final List<TaskEntity>? data;
-
+  final TaskEntity? editData;
+  late String status;
   final String? id;
 
   @override
@@ -33,21 +35,48 @@ class _AddEventPageState extends State<AddEventPage> {
   final contextController = TextEditingController();
 
   @override
+  void initState() {
+    titleController.text =
+        widget.pageTitle == 'Add Event' ? '' : widget.editData?.title ?? '';
+    contextController.text = widget.pageTitle == 'Add Event'
+        ? ''
+        : widget.editData?.eventContext ?? '';
+
+    widget.status =
+        widget.pageTitle == 'Add Event' ? '' : widget.editData?.status ?? '';
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    contextController.dispose();
+    titleController.dispose();
+    valueController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<TusksCubit, TusksState>(
       listener: (context, state) {
         if (state is AddSuccess) {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const TusksPage()));
+              MaterialPageRoute(builder: (context) => const TasksPage()));
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.message)));
         }
         if (state is EditSuccess) {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const TusksPage()));
+              MaterialPageRoute(builder: (context) => const TasksPage()));
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.message)));
         }
       },
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-          child: Icon(widget.pageTitle == 'Add Event'? Icons.save: Icons.edit),
+          child:
+              Icon(widget.pageTitle == 'Add Event' ? Icons.save : Icons.edit),
           onPressed: () {
             if (widget.pageTitle == 'Add Event') {
               _addTusk();
@@ -59,8 +88,8 @@ class _AddEventPageState extends State<AddEventPage> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const TusksPage()));
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const TasksPage()));
             },
             icon: const Icon(
               Icons.arrow_back_ios_outlined,
@@ -83,16 +112,26 @@ class _AddEventPageState extends State<AddEventPage> {
               ),
               verticalSpace(20),
               AppTextField(
+                onChanged: (value) {
+                  if (widget.pageTitle == 'Add Event') {
+                    print('this is context ${widget.editData?.eventContext}');
+                    contextController.text =
+                        widget.editData?.eventContext ?? '';
+                    value = widget.editData?.eventContext ?? '';
+                  }
+                },
                 label: 'Event Context',
                 controller: contextController,
                 textHint: 'Enter Context',
+                maxLines: 3,
               ),
               verticalSpace(50),
               DropDownTextField(
-                controller: valueController,
-                onChanged: (value) {
-                  print('>>>>>>>>>>${valueController.dropDownValue?.name}');
+                onChanged: (status) {
+                  status = widget.status;
+                  status = valueController.dropDownValue?.name;
                 },
+                controller: valueController,
                 dropDownList: [
                   DropDownValueModel(
                       name: StatusEnum.urgent.localize,
@@ -117,7 +156,7 @@ class _AddEventPageState extends State<AddEventPage> {
         title: titleController.text,
         eventContext: contextController.text,
         date: '2024',
-        status: valueController.dropDownValue!.name));
+        status: widget.status));
   }
 
   void _editTusk(String id) {
@@ -126,7 +165,7 @@ class _AddEventPageState extends State<AddEventPage> {
               title: titleController.text,
               eventContext: contextController.text,
               date: '2024',
-              status: valueController.dropDownValue!.name),
+              status: widget.status),
           collectionPath: id,
         );
   }

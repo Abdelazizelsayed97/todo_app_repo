@@ -7,7 +7,7 @@ import '../../domain/repos/task_repository.dart';
 import '../models/tusks_model_input.dart';
 
 class TusksRepositoryImpl implements TusksRepository {
-  CollectionReference collection =
+  final CollectionReference _collection =
       FirebaseFirestore.instance.collection("Tusk");
 
   TusksRepositoryImpl();
@@ -18,16 +18,20 @@ class TusksRepositoryImpl implements TusksRepository {
     if (data.isEmpty) {
       throw Exception();
     } else {
-      await collection.add(data);
+      await _collection.add(data);
     }
   }
 
   @override
-  Future<void> deleteEvent(String? id) async {
-    if (id == null) {
-      throw Exception();
-    } else {
-      await collection.doc(id).delete();
+  Future<void> deleteEvent(String id) async {
+    try {
+      if (id.isNotEmpty) {
+        await _collection.doc(id).delete();
+      } else {
+        throw Exception();
+      }
+    } catch (e) {
+      throw e;
     }
   }
 
@@ -37,25 +41,27 @@ class TusksRepositoryImpl implements TusksRepository {
       throw Exception();
     } else {
       final data = TaskModelInput.fromInput(input).toJson();
-      await collection.doc(collectionPath).update(data);
+      await _collection.doc(collectionPath).update(data);
     }
   }
 
   @override
   Stream<List<TaskEntity>> getTasks() {
-    final data = collection.snapshots();
+    final data = _collection.snapshots();
     if (data.isBroadcast) {
-      return data.map((querySnapshot) {
-        return querySnapshot.docs.map((doc) {
-          return TaskEntity(
-            id: doc.id,
-            title: doc['title'],
-            date: doc['date'],
-            status: doc['status'],
-            eventContext: doc['eventContext'],
-          );
-        }).toList();
-      });
+      return data.map(
+        (querySnapshot) {
+          return querySnapshot.docs.map((doc) {
+            return TaskEntity(
+              id: doc.id,
+              title: doc['title'],
+              date: doc['date'],
+              status: doc['status'],
+              eventContext: doc['eventContext'],
+            );
+          }).toList();
+        },
+      );
     } else {
       throw Exception();
     }

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class Styles {
-  Styles._(); // Private constructor
+  Styles._();
 
   static TextStyle bold({
     String? fontFamily,

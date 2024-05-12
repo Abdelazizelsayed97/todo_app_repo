@@ -112,14 +112,6 @@ class _AddEventPageState extends State<AddEventPage> {
               ),
               verticalSpace(20),
               AppTextField(
-                onChanged: (value) {
-                  if (widget.pageTitle == 'Add Event') {
-                    print('this is context ${widget.editData?.eventContext}');
-                    contextController.text =
-                        widget.editData?.eventContext ?? '';
-                    value = widget.editData?.eventContext ?? '';
-                  }
-                },
                 label: 'Event Context',
                 controller: contextController,
                 textHint: 'Enter Context',

@@ -77,50 +77,45 @@ class _TasksPageState extends State<TasksPage>
                   child: const Icon(Icons.add),
                 ),
                 body: SafeArea(
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.all(12.0.r),
-                      child: SafeArea(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Welcome !',
-                              style: Styles.bold(
-                                fontSize: 32.sp,
-                                color: Colors.black,
-                              ),
-                            ),
-                            StatusWidget(
-                              tabController: tabController,
-                            ),
-                            verticalSpace(20),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height,
-                              child: TabBarView(
-                                  controller: tabController,
-                                  children: [
-                                    AllTasksPage(
-                                      data: listOfTusksState.data ?? [],
-                                      onDelete: (index) => _deleteItem(index),
-                                    ),
-                                    UrgentTasksPage(
-                                      data: listOfTusksState.data,
-                                      onDelete: (index) => _deleteItem(index),
-                                    ),
-                                    CompletedTasksPage(
-                                      data: listOfTusksState.data,
-                                      onDelete: (index) => _deleteItem(index),
-                                    ),
-                                    UnCompletedTasksPage(
-                                      data: listOfTusksState.data,
-                                      onDelete: (index) => _deleteItem(index),
-                                    ),
-                                  ]),
-                            ),
-                          ],
+                  bottom: false,
+                  child: Padding(
+                    padding: EdgeInsets.all(12.0.r),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Welcome !',
+                          style: Styles.bold(
+                            fontSize: 32.sp,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
+                        StatusWidget(
+                          tabController: tabController,
+                        ),
+                        verticalSpace(20),
+                        Expanded(
+                          child:
+                              TabBarView(controller: tabController, children: [
+                            AllTasksPage(
+                              data: listOfTusksState.data ?? [],
+                              onDelete: (index) => _deleteItem(index),
+                            ),
+                            UrgentTasksPage(
+                              data: listOfTusksState.data,
+                              onDelete: (index) => _deleteItem(index),
+                            ),
+                            CompletedTasksPage(
+                              data: listOfTusksState.data,
+                              onDelete: (index) => _deleteItem(index),
+                            ),
+                            UnCompletedTasksPage(
+                              data: listOfTusksState.data,
+                              onDelete: (index) => _deleteItem(index),
+                            ),
+                          ]),
+                        ),
+                      ],
                     ),
                   ),
                 ),

@@ -54,17 +54,21 @@ class EventCardBody extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: Styles.bold(fontSize: 24, color: Colors.black),
+                        style: Styles.bold(fontSize: 18, color: Colors.black),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         eventContext,
                         style:
-                            Styles.normal(fontSize: 16, color: Colors.black54),
+                            Styles.normal(fontSize: 14, color: Colors.black54),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         date,
                         style: Styles.light(
-                          fontSize: 14,
+                          fontSize: 13,
                           color: Colors.black54,
                         ),
                       ),

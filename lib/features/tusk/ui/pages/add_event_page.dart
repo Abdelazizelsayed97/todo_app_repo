@@ -2,6 +2,7 @@ import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:second_task_todo_listapp/core/helper/spacing.dart';
 import 'package:second_task_todo_listapp/core/text_styles/text_styles.dart';
 import 'package:second_task_todo_listapp/features/tusk/domain/entities/add_event_entity.dart';
@@ -12,8 +13,6 @@ import '../tusks_cubit.dart';
 
 enum StatusEnum { uncompleted, completed, urgent }
 
-const int index = 0;
-
 class AddEventPage extends StatefulWidget {
   AddEventPage(
       {super.key, required this.pageTitle, this.data, this.id, this.editData});
@@ -21,8 +20,8 @@ class AddEventPage extends StatefulWidget {
   final String pageTitle;
   final List<TaskEntity>? data;
   final TaskEntity? editData;
-  late String status;
   final String? id;
+  final dateFormat = DateTime.now();
 
   @override
   State<AddEventPage> createState() => _AddEventPageState();
@@ -30,7 +29,8 @@ class AddEventPage extends StatefulWidget {
 
 class _AddEventPageState extends State<AddEventPage> {
   final titleController = TextEditingController();
-  final valueController = SingleValueDropDownController();
+  SingleValueDropDownController valueController =
+      SingleValueDropDownController();
 
   final contextController = TextEditingController();
 
@@ -41,9 +41,8 @@ class _AddEventPageState extends State<AddEventPage> {
     contextController.text = widget.pageTitle == 'Add Event'
         ? ''
         : widget.editData?.eventContext ?? '';
-
-    widget.status =
-        widget.pageTitle == 'Add Event' ? '' : widget.editData?.status ?? '';
+    valueController.setDropDown(DropDownValueModel(
+        name: widget.editData?.status ?? '', value: widget.editData?.status));
 
     super.initState();
   }
@@ -119,10 +118,6 @@ class _AddEventPageState extends State<AddEventPage> {
               ),
               verticalSpace(50),
               DropDownTextField(
-                onChanged: (status) {
-                  status = widget.status;
-                  status = valueController.dropDownValue?.name;
-                },
                 controller: valueController,
                 dropDownList: [
                   DropDownValueModel(
@@ -147,8 +142,10 @@ class _AddEventPageState extends State<AddEventPage> {
     context.read<TusksCubit>().addEvent(TaskEntity(
         title: titleController.text,
         eventContext: contextController.text,
-        date: '2024',
-        status: widget.status));
+        // date:
+        //     "${widget.dateFormat.day}-${widget.dateFormat.month}-${widget.dateFormat.year}",
+        date: DateFormat("E d MMM h:mm a").format(widget.dateFormat),
+        status: valueController.dropDownValue?.name ?? ""));
   }
 
   void _editTusk(String id) {
@@ -156,8 +153,8 @@ class _AddEventPageState extends State<AddEventPage> {
           input: TaskEntity(
               title: titleController.text,
               eventContext: contextController.text,
-              date: '2024',
-              status: widget.status),
+              date: widget.dateFormat.toString(),
+              status: valueController.dropDownValue?.name ?? ""),
           collectionPath: id,
         );
   }

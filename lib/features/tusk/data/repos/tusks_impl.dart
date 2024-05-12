@@ -31,7 +31,7 @@ class TusksRepositoryImpl implements TusksRepository {
         throw Exception();
       }
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 

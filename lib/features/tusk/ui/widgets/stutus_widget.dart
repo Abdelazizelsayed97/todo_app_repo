@@ -5,7 +5,7 @@ import 'package:second_task_todo_listapp/core/consts/consts.dart';
 class StatusWidget extends StatefulWidget {
   final TabController tabController;
 
-  const StatusWidget({Key? key, required this.tabController}) : super(key: key);
+  const StatusWidget({super.key, required this.tabController});
 
   @override
   State<StatusWidget> createState() => _StatusWidgetState();
@@ -44,7 +44,7 @@ class _StatusWidgetState extends State<StatusWidget> {
                 ),
                 child: Text(
                   status,
-                  style: TextStyle(),
+                  style: const TextStyle(),
                   textAlign: TextAlign.center,
                 ),
               ),

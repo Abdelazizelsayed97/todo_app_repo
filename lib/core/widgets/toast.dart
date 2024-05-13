@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ShowToast extends StatefulWidget {
-  const ShowToast({Key? key});
+  const ShowToast({super.key,});
 
   @override
   State<ShowToast> createState() => _ShowToastState();
@@ -23,12 +23,12 @@ class _ShowToastState extends State<ShowToast> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Show Toast Example'),
+        title: const Text('Show Toast Example'),
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: _showToast,
-          child: Text('Show Toast'),
+          child: const Text('Show Toast'),
         ),
       ),
     );
@@ -54,18 +54,18 @@ class _ShowToastState extends State<ShowToast> {
     fToast.showToast(
       child: toast,
       gravity: ToastGravity.BOTTOM,
-      toastDuration: Duration(seconds: 2),
+      toastDuration: const Duration(seconds: 2),
     );
 
     // Custom Toast Position
     fToast.showToast(
       child: toast,
-      toastDuration: Duration(seconds: 2),
+      toastDuration: const Duration(seconds: 2),
       positionedToastBuilder: (context, child) {
         return Positioned(
-          child: child,
           top: 16.0,
           left: 16.0,
+          child: child,
         );
       },
     );

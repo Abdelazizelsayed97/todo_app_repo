@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:second_task_todo_listapp/features/tusk/ui/pages/tab_bar_pages/all_page.dart';
-import 'package:second_task_todo_listapp/features/tusk/ui/pages/tab_bar_pages/completed_page.dart';
-import 'package:second_task_todo_listapp/features/tusk/ui/pages/tab_bar_pages/uncompleted_page.dart';
-import 'package:second_task_todo_listapp/features/tusk/ui/pages/tab_bar_pages/urgent_page.dart';
+import 'package:second_task_todo_listapp/features/tusk/domain/entities/enums/status_enum.dart';
+import 'package:second_task_todo_listapp/features/tusk/ui/pages/tab_bar_pages/custom_tasks_page.dart';
 
 import '../../../../core/helper/spacing.dart';
 import '../../../../core/text_styles/text_styles.dart';
 import '../tusks_cubit.dart';
-import '../widgets/stutus_widget.dart';
+import '../widgets/status_widget.dart';
 import 'add_event_page.dart';
 
-class TasksPage extends StatefulWidget {
-  const TasksPage({super.key});
+class MainTasksPage extends StatefulWidget {
+  const MainTasksPage({super.key});
 
   @override
-  State<TasksPage> createState() => _TasksPageState();
+  State<MainTasksPage> createState() => _MainTasksPageState();
 }
 
-class _TasksPageState extends State<TasksPage>
+class _MainTasksPageState extends State<MainTasksPage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
 
@@ -32,10 +30,6 @@ class _TasksPageState extends State<TasksPage>
 
   void getTusks() {
     context.read<TusksCubit>().getEvents();
-  }
-
-  Future<void> _deleteItem(String documentId) async {
-    BlocProvider.of<TusksCubit>(context).deleteEvent(documentId);
   }
 
   @override
@@ -61,7 +55,7 @@ class _TasksPageState extends State<TasksPage>
         if (state is GetSuccess) {
           return StreamBuilder(
             stream: state.data,
-            builder: (context, listOfTusksState) {
+            builder: (context, allData) {
               return Scaffold(
                 floatingActionButton: FloatingActionButton(
                   onPressed: () {
@@ -69,7 +63,7 @@ class _TasksPageState extends State<TasksPage>
                         context,
                         MaterialPageRoute(
                           builder: (context) => AddEventPage(
-                            data: listOfTusksState.data,
+                            data: allData.data,
                             pageTitle: 'Add Event',
                           ),
                         ));
@@ -95,25 +89,26 @@ class _TasksPageState extends State<TasksPage>
                         ),
                         verticalSpace(20),
                         Expanded(
-                          child:
-                              TabBarView(controller: tabController, children: [
-                            AllTasksPage(
-                              data: listOfTusksState.data ?? [],
-                              onDelete: (index) => _deleteItem(index),
-                            ),
-                            UrgentTasksPage(
-                              data: listOfTusksState.data,
-                              onDelete: (index) => _deleteItem(index),
-                            ),
-                            CompletedTasksPage(
-                              data: listOfTusksState.data,
-                              onDelete: (index) => _deleteItem(index),
-                            ),
-                            UnCompletedTasksPage(
-                              data: listOfTusksState.data,
-                              onDelete: (index) => _deleteItem(index),
-                            ),
-                          ]),
+                          child: TabBarView(
+                            controller: tabController,
+                            children: [
+                              //All
+                              CustomTasksPage(
+                                  data: allData.data, selectStatusEnum: null),
+                              //Urgent
+                              CustomTasksPage(
+                                  data: allData.data,
+                                  selectStatusEnum: StatusEnum.urgent),
+                              //Completed
+                              CustomTasksPage(
+                                  data: allData.data,
+                                  selectStatusEnum: StatusEnum.completed),
+                              //Uncompleted
+                              CustomTasksPage(
+                                  data: allData.data,
+                                  selectStatusEnum: StatusEnum.uncompleted),
+                            ],
+                          ),
                         ),
                       ],
                     ),

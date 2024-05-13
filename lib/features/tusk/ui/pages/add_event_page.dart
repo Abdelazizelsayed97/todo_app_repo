@@ -6,12 +6,13 @@ import 'package:intl/intl.dart';
 import 'package:second_task_todo_listapp/core/helper/spacing.dart';
 import 'package:second_task_todo_listapp/core/text_styles/text_styles.dart';
 import 'package:second_task_todo_listapp/features/tusk/domain/entities/add_event_entity.dart';
-import 'package:second_task_todo_listapp/features/tusk/ui/pages/tusks_page.dart';
+import 'package:second_task_todo_listapp/features/tusk/ui/pages/main_tasks_page.dart';
 
 import '../../../../core/widgets/app_text_field.dart';
+import '../../domain/entities/enums/status_enum.dart';
 import '../tusks_cubit.dart';
 
-enum StatusEnum { uncompleted, completed, urgent }
+
 
 class AddEventPage extends StatefulWidget {
   AddEventPage(
@@ -61,13 +62,13 @@ class _AddEventPageState extends State<AddEventPage> {
       listener: (context, state) {
         if (state is AddSuccess) {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const TasksPage()));
+              MaterialPageRoute(builder: (context) => const MainTasksPage()));
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(state.message)));
         }
         if (state is EditSuccess) {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const TasksPage()));
+              MaterialPageRoute(builder: (context) => const MainTasksPage()));
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(state.message)));
         }
@@ -88,7 +89,7 @@ class _AddEventPageState extends State<AddEventPage> {
           leading: IconButton(
             onPressed: () {
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const TasksPage()));
+                  MaterialPageRoute(builder: (context) => const MainTasksPage()));
             },
             icon: const Icon(
               Icons.arrow_back_ios_outlined,
@@ -121,14 +122,14 @@ class _AddEventPageState extends State<AddEventPage> {
                 controller: valueController,
                 dropDownList: [
                   DropDownValueModel(
-                      name: StatusEnum.urgent.localize,
-                      value: StatusEnum.values[0].localize),
+                      name: StatusEnum.urgent.localizer,
+                      value: StatusEnum.values[0].localizer),
                   DropDownValueModel(
-                      name: StatusEnum.completed.localize,
-                      value: StatusEnum.values[1].localize),
+                      name: StatusEnum.completed.localizer,
+                      value: StatusEnum.values[1].localizer),
                   DropDownValueModel(
-                      name: StatusEnum.uncompleted.localize,
-                      value: StatusEnum.values[2].localize)
+                      name: StatusEnum.uncompleted.localizer,
+                      value: StatusEnum.values[2].localizer)
                 ],
               ),
             ],
@@ -142,8 +143,6 @@ class _AddEventPageState extends State<AddEventPage> {
     context.read<TusksCubit>().addEvent(TaskEntity(
         title: titleController.text,
         eventContext: contextController.text,
-        // date:
-        //     "${widget.dateFormat.day}-${widget.dateFormat.month}-${widget.dateFormat.year}",
         date: DateFormat("E d MMM h:mm a").format(widget.dateFormat),
         status: valueController.dropDownValue?.name ?? ""));
   }
@@ -160,15 +159,3 @@ class _AddEventPageState extends State<AddEventPage> {
   }
 }
 
-extension ConvertEnumToString on StatusEnum {
-  String get localize {
-    switch (this) {
-      case StatusEnum.uncompleted:
-        return 'uncompleted';
-      case StatusEnum.completed:
-        return 'completed';
-      case StatusEnum.urgent:
-        return 'urgent';
-    }
-  }
-}

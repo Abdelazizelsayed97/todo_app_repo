@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class TaskEntity extends Equatable {
@@ -16,5 +17,11 @@ class TaskEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [title, eventContext, date, status,id];
+  List<Object?> get props => [
+        title,
+        eventContext,
+        date,
+        status,
+        id,
+      ];
 }

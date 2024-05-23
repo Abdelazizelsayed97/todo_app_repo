@@ -2,13 +2,14 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../../../core/consts/consts.dart';
 import '../../domain/entities/add_event_entity.dart';
 import '../../domain/repos/task_repository.dart';
 import '../models/tusks_model_input.dart';
 
 class TusksRepositoryImpl implements TusksRepository {
-  final CollectionReference _collection =
-      FirebaseFirestore.instance.collection("Tusk");
+  CollectionReference get _collection =>
+      FirebaseFirestore.instance.collection(AppConsts.collectionName);
 
   TusksRepositoryImpl();
 

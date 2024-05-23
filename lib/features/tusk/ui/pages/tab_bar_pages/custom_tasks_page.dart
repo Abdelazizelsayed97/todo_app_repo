@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:second_task_todo_listapp/core/text_styles/text_styles.dart';
 import 'package:second_task_todo_listapp/features/tusk/domain/entities/enums/status_enum.dart';
-import 'package:second_task_todo_listapp/features/tusk/ui/tusks_cubit.dart';
 import 'package:second_task_todo_listapp/features/tusk/ui/widgets/dismethable_widget.dart';
 import 'package:second_task_todo_listapp/features/tusk/ui/widgets/event_card_body.dart';
 
 import '../../../domain/entities/add_event_entity.dart';
+import '../../tusks_cubit.dart';
 
 class CustomTasksPage extends StatefulWidget {
   final List<TaskEntity>? data;
@@ -44,6 +44,20 @@ class _CustomTasksPageState extends State<CustomTasksPage> {
     }
   }
 
+  List<TaskEntity> _sortData(List<TaskEntity> data) {
+    data.sort((a, b) {
+      if (a.status == StatusEnum.urgent.localizer) {
+        return -1;
+      } else if (a.status == StatusEnum.uncompleted.localizer &&
+          b.status == StatusEnum.completed.localizer) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+    return data;
+  }
+
   String _getEmptyData(StatusEnum? type) {
     switch (type) {
       case StatusEnum.uncompleted:
@@ -59,8 +73,10 @@ class _CustomTasksPageState extends State<CustomTasksPage> {
 
   @override
   Widget build(BuildContext context) {
-    filteredList = _filterData();
-    return (filteredList?.isEmpty ?? false)
+    List<TaskEntity>? filteredList = _filterData();
+    List<TaskEntity> sortedFilteredList = _sortData(filteredList ?? []);
+
+    return (sortedFilteredList.isEmpty)
         ? Center(
             child: Text(
               widget.selectStatusEnum?.localizer == null
@@ -73,23 +89,21 @@ class _CustomTasksPageState extends State<CustomTasksPage> {
             ),
           )
         : ListView.builder(
-            itemCount: filteredList?.length,
+            itemCount: sortedFilteredList.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              final documentId = filteredList?[index].id;
-              final item = filteredList?[index];
+              final documentId = sortedFilteredList[index].id;
+              final item = sortedFilteredList[index];
               return DismissibleListItem(
-                onDelete: () {
-                  _deleteItem(
-                      context: context, documentId: documentId.toString());
-                },
+                onDelete: () =>
+                    _deleteItem(context: context, documentId: documentId ?? ''),
                 child: EventCardBody(
                   input: item,
-                  title: item?.title ?? "",
-                  eventContext: item?.eventContext ?? "",
-                  status: item?.status ?? "",
-                  date: item?.date ?? '',
-                  id: item?.id ?? '',
+                  title: item.title,
+                  eventContext: item.eventContext,
+                  status: item.status,
+                  date: item.date ?? '',
+                  id: item.id ?? '',
                 ),
               );
             },

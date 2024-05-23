@@ -12,7 +12,7 @@ import '../../features/tusk/ui/tusks_cubit.dart';
 final getIt = GetIt.instance;
 final sl = GetIt.instance;
 
-class AppDi {
+class TasksDi {
   static Future<void> setupGetIt() async {
     getIt.registerSingleton<TusksRepository>(
       TusksRepositoryImpl(),

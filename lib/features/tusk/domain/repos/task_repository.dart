@@ -11,4 +11,5 @@ abstract class TusksRepository {
   Future<void> editEvent({TaskEntity? input, String? collectionPath});
 
   Stream<List<TaskEntity>> getTasks();
+  // Stream<List<TaskEntity>> getFilteredTasks();
 }

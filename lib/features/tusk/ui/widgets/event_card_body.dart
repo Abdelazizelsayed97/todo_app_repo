@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:second_task_todo_listapp/core/text_styles/text_styles.dart';
 import 'package:second_task_todo_listapp/features/tusk/domain/entities/add_event_entity.dart';
-import 'package:second_task_todo_listapp/features/tusk/ui/pages/add_event_page.dart';
+import 'package:second_task_todo_listapp/features/tusk/ui/pages/add_and_edit_event_page.dart';
 
 class EventCardBody extends StatelessWidget {
   const EventCardBody({
@@ -26,10 +26,9 @@ class EventCardBody extends StatelessWidget {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => AddEventPage(
-                  editData: input,
-                  pageTitle: "Edit Event",
-                  id: id,
+            builder: (context) => AddAndEditEventPage(
+                  data: input,
+                  isEdit: true,
                 )));
   }
 

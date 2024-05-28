@@ -10,6 +10,7 @@ import '../domain/use_cases/edit_event_use_case.dart';
 import '../domain/use_cases/get_event_use_case.dart';
 
 part 'tusks_cubit.freezed.dart';
+
 part 'tusks_state.dart';
 
 class TusksCubit extends Cubit<TusksState> {
@@ -28,7 +29,7 @@ class TusksCubit extends Cubit<TusksState> {
     try {
       emit(const TusksState.addLoading());
       emit(const TusksState.addSuccess('Tusk added successfully'));
-      emit( TusksState.getSuccess(data:lastState.data ));
+      emit(TusksState.getSuccess(data: lastState.data));
     } catch (e) {
       emit(const TusksState.addFailure('Failed to add event'));
     }
@@ -48,23 +49,21 @@ class TusksCubit extends Cubit<TusksState> {
   Future<void> editEvent(
       {required TaskEntity input, required String collectionPath}) async {
     final lastState = state as GetSuccess;
-    await _editEventUseCase.call(input: input, collectionPath: collectionPath);
+    await _editEventUseCase.execute(
+        input: input, collectionPath: collectionPath);
     try {
       emit(const TusksState.editLoading());
       emit(const TusksState.editSuccess('Tusk edited successfully'));
-      emit( TusksState.getSuccess(data:lastState.data ));
-
+      emit(TusksState.getSuccess(data: lastState.data));
     } catch (e) {
       emit(const TusksState.editFailure('Failed to edited event'));
     }
   }
 
   void getEvents() async {
+    emit(const TusksState.getLoading());
     final result = _getEventUseCase.call();
-    print('${result}');
     try {
-      emit(const TusksState.getLoading());
-
       emit(TusksState.getSuccess(
           message: 'Tusks loaded successfully', data: result));
     } catch (e) {

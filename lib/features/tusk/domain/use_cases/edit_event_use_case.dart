@@ -7,7 +7,7 @@ class EditEventUseCase {
 
   EditEventUseCase(this._eventRepository);
 
-  Future<void> call({required TaskEntity input,required String collectionPath}) async {
+  Future<void> execute({required TaskEntity input,required String collectionPath}) async {
     return await _eventRepository.editEvent(
         input: input, collectionPath: collectionPath);
   }

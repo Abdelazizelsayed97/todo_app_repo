@@ -31,6 +31,7 @@ mixin _$AuthState {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) =>
@@ -50,6 +51,7 @@ mixin _$AuthState {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) =>
@@ -69,6 +71,7 @@ mixin _$AuthState {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -89,6 +92,8 @@ mixin _$AuthState {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) =>
@@ -108,6 +113,8 @@ mixin _$AuthState {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) =>
@@ -127,6 +134,8 @@ mixin _$AuthState {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -145,9 +154,9 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     implements $AuthStateCopyWith<$Res> {
   _$AuthStateCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 
@@ -169,12 +178,18 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   const _$InitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.initial'));
   }
 
   @override
@@ -202,6 +217,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -224,6 +240,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -246,6 +263,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -272,6 +290,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -294,6 +314,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -316,6 +338,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -349,12 +373,18 @@ class __$$LoginInitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoginInitialImpl implements _LoginInitial {
+class _$LoginInitialImpl with DiagnosticableTreeMixin implements _LoginInitial {
   const _$LoginInitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.loginInitial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.loginInitial'));
   }
 
   @override
@@ -382,6 +412,7 @@ class _$LoginInitialImpl implements _LoginInitial {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -404,6 +435,7 @@ class _$LoginInitialImpl implements _LoginInitial {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -426,6 +458,7 @@ class _$LoginInitialImpl implements _LoginInitial {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -452,6 +485,8 @@ class _$LoginInitialImpl implements _LoginInitial {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -474,6 +509,8 @@ class _$LoginInitialImpl implements _LoginInitial {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -496,6 +533,8 @@ class _$LoginInitialImpl implements _LoginInitial {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -529,12 +568,18 @@ class __$$LoginLoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoginLoadingImpl implements LoginLoading {
+class _$LoginLoadingImpl with DiagnosticableTreeMixin implements LoginLoading {
   const _$LoginLoadingImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.loginLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.loginLoading'));
   }
 
   @override
@@ -562,6 +607,7 @@ class _$LoginLoadingImpl implements LoginLoading {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -584,6 +630,7 @@ class _$LoginLoadingImpl implements LoginLoading {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -606,6 +653,7 @@ class _$LoginLoadingImpl implements LoginLoading {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -632,6 +680,8 @@ class _$LoginLoadingImpl implements LoginLoading {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -654,6 +704,8 @@ class _$LoginLoadingImpl implements LoginLoading {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -676,6 +728,8 @@ class _$LoginLoadingImpl implements LoginLoading {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -724,15 +778,23 @@ class __$$LoginSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoginSuccessImpl implements LoginSuccess {
+class _$LoginSuccessImpl with DiagnosticableTreeMixin implements LoginSuccess {
   const _$LoginSuccessImpl({this.credential});
 
   @override
   final UserCredential? credential;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.loginSuccess(credential: $credential)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.loginSuccess'))
+      ..add(DiagnosticsProperty('credential', credential));
   }
 
   @override
@@ -769,6 +831,7 @@ class _$LoginSuccessImpl implements LoginSuccess {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -791,6 +854,7 @@ class _$LoginSuccessImpl implements LoginSuccess {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -813,6 +877,7 @@ class _$LoginSuccessImpl implements LoginSuccess {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -839,6 +904,8 @@ class _$LoginSuccessImpl implements LoginSuccess {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -861,6 +928,8 @@ class _$LoginSuccessImpl implements LoginSuccess {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -883,6 +952,8 @@ class _$LoginSuccessImpl implements LoginSuccess {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -937,15 +1008,23 @@ class __$$LoginFailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoginFailureImpl implements LoginFailure {
+class _$LoginFailureImpl with DiagnosticableTreeMixin implements LoginFailure {
   const _$LoginFailureImpl(this.message);
 
   @override
   final String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.loginFailure(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.loginFailure'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -981,6 +1060,7 @@ class _$LoginFailureImpl implements LoginFailure {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -1003,6 +1083,7 @@ class _$LoginFailureImpl implements LoginFailure {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -1025,6 +1106,7 @@ class _$LoginFailureImpl implements LoginFailure {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -1051,6 +1133,8 @@ class _$LoginFailureImpl implements LoginFailure {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -1073,6 +1157,8 @@ class _$LoginFailureImpl implements LoginFailure {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -1095,6 +1181,8 @@ class _$LoginFailureImpl implements LoginFailure {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -1133,12 +1221,20 @@ class __$$RegisterInitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RegisterInitialImpl implements _RegisterInitial {
+class _$RegisterInitialImpl
+    with DiagnosticableTreeMixin
+    implements _RegisterInitial {
   const _$RegisterInitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.registerInitial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.registerInitial'));
   }
 
   @override
@@ -1166,6 +1262,7 @@ class _$RegisterInitialImpl implements _RegisterInitial {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -1188,6 +1285,7 @@ class _$RegisterInitialImpl implements _RegisterInitial {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -1210,6 +1308,7 @@ class _$RegisterInitialImpl implements _RegisterInitial {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -1236,6 +1335,8 @@ class _$RegisterInitialImpl implements _RegisterInitial {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -1258,6 +1359,8 @@ class _$RegisterInitialImpl implements _RegisterInitial {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -1280,6 +1383,8 @@ class _$RegisterInitialImpl implements _RegisterInitial {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -1313,12 +1418,20 @@ class __$$RegisterLoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RegisterLoadingImpl implements RegisterLoading {
+class _$RegisterLoadingImpl
+    with DiagnosticableTreeMixin
+    implements RegisterLoading {
   const _$RegisterLoadingImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.registerLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.registerLoading'));
   }
 
   @override
@@ -1346,6 +1459,7 @@ class _$RegisterLoadingImpl implements RegisterLoading {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -1368,6 +1482,7 @@ class _$RegisterLoadingImpl implements RegisterLoading {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -1390,6 +1505,7 @@ class _$RegisterLoadingImpl implements RegisterLoading {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -1416,6 +1532,8 @@ class _$RegisterLoadingImpl implements RegisterLoading {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -1438,6 +1556,8 @@ class _$RegisterLoadingImpl implements RegisterLoading {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -1460,6 +1580,8 @@ class _$RegisterLoadingImpl implements RegisterLoading {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -1493,12 +1615,20 @@ class __$$RegisterSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RegisterSuccessImpl implements RegisterSuccess {
+class _$RegisterSuccessImpl
+    with DiagnosticableTreeMixin
+    implements RegisterSuccess {
   const _$RegisterSuccessImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.registerSuccess()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.registerSuccess'));
   }
 
   @override
@@ -1526,6 +1656,7 @@ class _$RegisterSuccessImpl implements RegisterSuccess {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -1548,6 +1679,7 @@ class _$RegisterSuccessImpl implements RegisterSuccess {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -1570,6 +1702,7 @@ class _$RegisterSuccessImpl implements RegisterSuccess {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -1596,6 +1729,8 @@ class _$RegisterSuccessImpl implements RegisterSuccess {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -1618,6 +1753,8 @@ class _$RegisterSuccessImpl implements RegisterSuccess {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -1640,6 +1777,8 @@ class _$RegisterSuccessImpl implements RegisterSuccess {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -1688,15 +1827,25 @@ class __$$RegisterFailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RegisterFailureImpl implements RegisterFailure {
+class _$RegisterFailureImpl
+    with DiagnosticableTreeMixin
+    implements RegisterFailure {
   const _$RegisterFailureImpl(this.message);
 
   @override
   final String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.registerFailure(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.registerFailure'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -1733,6 +1882,7 @@ class _$RegisterFailureImpl implements RegisterFailure {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -1755,6 +1905,7 @@ class _$RegisterFailureImpl implements RegisterFailure {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -1777,6 +1928,7 @@ class _$RegisterFailureImpl implements RegisterFailure {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -1803,6 +1955,8 @@ class _$RegisterFailureImpl implements RegisterFailure {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -1825,6 +1979,8 @@ class _$RegisterFailureImpl implements RegisterFailure {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -1847,6 +2003,8 @@ class _$RegisterFailureImpl implements RegisterFailure {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -1885,12 +2043,20 @@ class __$$LogoutLoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LogoutLoadingImpl implements LogoutLoading {
+class _$LogoutLoadingImpl
+    with DiagnosticableTreeMixin
+    implements LogoutLoading {
   const _$LogoutLoadingImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.logoutLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.logoutLoading'));
   }
 
   @override
@@ -1918,6 +2084,7 @@ class _$LogoutLoadingImpl implements LogoutLoading {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -1940,6 +2107,7 @@ class _$LogoutLoadingImpl implements LogoutLoading {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -1962,6 +2130,7 @@ class _$LogoutLoadingImpl implements LogoutLoading {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -1988,6 +2157,8 @@ class _$LogoutLoadingImpl implements LogoutLoading {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -2010,6 +2181,8 @@ class _$LogoutLoadingImpl implements LogoutLoading {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -2032,6 +2205,8 @@ class _$LogoutLoadingImpl implements LogoutLoading {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -2065,12 +2240,20 @@ class __$$LogoutSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LogoutSuccessImpl implements LogoutSuccess {
+class _$LogoutSuccessImpl
+    with DiagnosticableTreeMixin
+    implements LogoutSuccess {
   const _$LogoutSuccessImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.logoutSuccess()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.logoutSuccess'));
   }
 
   @override
@@ -2098,6 +2281,7 @@ class _$LogoutSuccessImpl implements LogoutSuccess {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -2120,6 +2304,7 @@ class _$LogoutSuccessImpl implements LogoutSuccess {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -2142,6 +2327,7 @@ class _$LogoutSuccessImpl implements LogoutSuccess {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -2168,6 +2354,8 @@ class _$LogoutSuccessImpl implements LogoutSuccess {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -2190,6 +2378,8 @@ class _$LogoutSuccessImpl implements LogoutSuccess {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -2212,6 +2402,8 @@ class _$LogoutSuccessImpl implements LogoutSuccess {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -2260,15 +2452,25 @@ class __$$LogoutFailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LogoutFailureImpl implements LogoutFailure {
+class _$LogoutFailureImpl
+    with DiagnosticableTreeMixin
+    implements LogoutFailure {
   const _$LogoutFailureImpl(this.message);
 
   @override
   final String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.logoutFailure(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.logoutFailure'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -2304,6 +2506,7 @@ class _$LogoutFailureImpl implements LogoutFailure {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -2326,6 +2529,7 @@ class _$LogoutFailureImpl implements LogoutFailure {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -2348,6 +2552,7 @@ class _$LogoutFailureImpl implements LogoutFailure {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -2374,6 +2579,8 @@ class _$LogoutFailureImpl implements LogoutFailure {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -2396,6 +2603,8 @@ class _$LogoutFailureImpl implements LogoutFailure {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -2418,6 +2627,8 @@ class _$LogoutFailureImpl implements LogoutFailure {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -2456,12 +2667,21 @@ class __$$PhoneNumberSubmittedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PhoneNumberSubmittedImpl implements PhoneNumberSubmitted {
+class _$PhoneNumberSubmittedImpl
+    with DiagnosticableTreeMixin
+    implements PhoneNumberSubmitted {
   const _$PhoneNumberSubmittedImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.phoneNumberSubmitted()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'AuthState.phoneNumberSubmitted'));
   }
 
   @override
@@ -2490,6 +2710,7 @@ class _$PhoneNumberSubmittedImpl implements PhoneNumberSubmitted {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -2512,6 +2733,7 @@ class _$PhoneNumberSubmittedImpl implements PhoneNumberSubmitted {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -2534,6 +2756,7 @@ class _$PhoneNumberSubmittedImpl implements PhoneNumberSubmitted {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -2560,6 +2783,8 @@ class _$PhoneNumberSubmittedImpl implements PhoneNumberSubmitted {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -2582,6 +2807,8 @@ class _$PhoneNumberSubmittedImpl implements PhoneNumberSubmitted {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -2604,6 +2831,8 @@ class _$PhoneNumberSubmittedImpl implements PhoneNumberSubmitted {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -2617,6 +2846,207 @@ class _$PhoneNumberSubmittedImpl implements PhoneNumberSubmitted {
 
 abstract class PhoneNumberSubmitted implements AuthState {
   const factory PhoneNumberSubmitted() = _$PhoneNumberSubmittedImpl;
+}
+
+/// @nodoc
+abstract class _$$PhoneNumberSubmittedFailedImplCopyWith<$Res> {
+  factory _$$PhoneNumberSubmittedFailedImplCopyWith(
+          _$PhoneNumberSubmittedFailedImpl value,
+          $Res Function(_$PhoneNumberSubmittedFailedImpl) then) =
+      __$$PhoneNumberSubmittedFailedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PhoneNumberSubmittedFailedImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$PhoneNumberSubmittedFailedImpl>
+    implements _$$PhoneNumberSubmittedFailedImplCopyWith<$Res> {
+  __$$PhoneNumberSubmittedFailedImplCopyWithImpl(
+      _$PhoneNumberSubmittedFailedImpl _value,
+      $Res Function(_$PhoneNumberSubmittedFailedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PhoneNumberSubmittedFailedImpl
+    with DiagnosticableTreeMixin
+    implements PhoneNumberSubmittedFailed {
+  const _$PhoneNumberSubmittedFailedImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.phoneNumberSubmittedFailed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+        DiagnosticsProperty('type', 'AuthState.phoneNumberSubmittedFailed'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PhoneNumberSubmittedFailedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginInitial,
+    required TResult Function() loginLoading,
+    required TResult Function(UserCredential? credential) loginSuccess,
+    required TResult Function(String message) loginFailure,
+    required TResult Function() registerInitial,
+    required TResult Function() registerLoading,
+    required TResult Function() registerSuccess,
+    required TResult Function(String message) registerFailure,
+    required TResult Function() logoutLoading,
+    required TResult Function() logoutSuccess,
+    required TResult Function(String message) logoutFailure,
+    required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
+    required TResult Function(String message) errorOccurred,
+    required TResult Function() phoneOTPVerified,
+  }) {
+    return phoneNumberSubmittedFailed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginInitial,
+    TResult? Function()? loginLoading,
+    TResult? Function(UserCredential? credential)? loginSuccess,
+    TResult? Function(String message)? loginFailure,
+    TResult? Function()? registerInitial,
+    TResult? Function()? registerLoading,
+    TResult? Function()? registerSuccess,
+    TResult? Function(String message)? registerFailure,
+    TResult? Function()? logoutLoading,
+    TResult? Function()? logoutSuccess,
+    TResult? Function(String message)? logoutFailure,
+    TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
+    TResult? Function(String message)? errorOccurred,
+    TResult? Function()? phoneOTPVerified,
+  }) {
+    return phoneNumberSubmittedFailed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginInitial,
+    TResult Function()? loginLoading,
+    TResult Function(UserCredential? credential)? loginSuccess,
+    TResult Function(String message)? loginFailure,
+    TResult Function()? registerInitial,
+    TResult Function()? registerLoading,
+    TResult Function()? registerSuccess,
+    TResult Function(String message)? registerFailure,
+    TResult Function()? logoutLoading,
+    TResult Function()? logoutSuccess,
+    TResult Function(String message)? logoutFailure,
+    TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
+    TResult Function(String message)? errorOccurred,
+    TResult Function()? phoneOTPVerified,
+    required TResult orElse(),
+  }) {
+    if (phoneNumberSubmittedFailed != null) {
+      return phoneNumberSubmittedFailed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoginInitial value) loginInitial,
+    required TResult Function(LoginLoading value) loginLoading,
+    required TResult Function(LoginSuccess value) loginSuccess,
+    required TResult Function(LoginFailure value) loginFailure,
+    required TResult Function(_RegisterInitial value) registerInitial,
+    required TResult Function(RegisterLoading value) registerLoading,
+    required TResult Function(RegisterSuccess value) registerSuccess,
+    required TResult Function(RegisterFailure value) registerFailure,
+    required TResult Function(LogoutLoading value) logoutLoading,
+    required TResult Function(LogoutSuccess value) logoutSuccess,
+    required TResult Function(LogoutFailure value) logoutFailure,
+    required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
+    required TResult Function(ErrorOccurred value) errorOccurred,
+    required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
+  }) {
+    return phoneNumberSubmittedFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoginInitial value)? loginInitial,
+    TResult? Function(LoginLoading value)? loginLoading,
+    TResult? Function(LoginSuccess value)? loginSuccess,
+    TResult? Function(LoginFailure value)? loginFailure,
+    TResult? Function(_RegisterInitial value)? registerInitial,
+    TResult? Function(RegisterLoading value)? registerLoading,
+    TResult? Function(RegisterSuccess value)? registerSuccess,
+    TResult? Function(RegisterFailure value)? registerFailure,
+    TResult? Function(LogoutLoading value)? logoutLoading,
+    TResult? Function(LogoutSuccess value)? logoutSuccess,
+    TResult? Function(LogoutFailure value)? logoutFailure,
+    TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
+    TResult? Function(ErrorOccurred value)? errorOccurred,
+    TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
+  }) {
+    return phoneNumberSubmittedFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoginInitial value)? loginInitial,
+    TResult Function(LoginLoading value)? loginLoading,
+    TResult Function(LoginSuccess value)? loginSuccess,
+    TResult Function(LoginFailure value)? loginFailure,
+    TResult Function(_RegisterInitial value)? registerInitial,
+    TResult Function(RegisterLoading value)? registerLoading,
+    TResult Function(RegisterSuccess value)? registerSuccess,
+    TResult Function(RegisterFailure value)? registerFailure,
+    TResult Function(LogoutLoading value)? logoutLoading,
+    TResult Function(LogoutSuccess value)? logoutSuccess,
+    TResult Function(LogoutFailure value)? logoutFailure,
+    TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
+    TResult Function(ErrorOccurred value)? errorOccurred,
+    TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
+    required TResult orElse(),
+  }) {
+    if (phoneNumberSubmittedFailed != null) {
+      return phoneNumberSubmittedFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PhoneNumberSubmittedFailed implements AuthState {
+  const factory PhoneNumberSubmittedFailed() = _$PhoneNumberSubmittedFailedImpl;
 }
 
 /// @nodoc
@@ -2652,15 +3082,25 @@ class __$$ErrorOccurredImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorOccurredImpl implements ErrorOccurred {
+class _$ErrorOccurredImpl
+    with DiagnosticableTreeMixin
+    implements ErrorOccurred {
   const _$ErrorOccurredImpl(this.message);
 
   @override
   final String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.errorOccurred(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.errorOccurred'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
@@ -2696,6 +3136,7 @@ class _$ErrorOccurredImpl implements ErrorOccurred {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -2718,6 +3159,7 @@ class _$ErrorOccurredImpl implements ErrorOccurred {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -2740,6 +3182,7 @@ class _$ErrorOccurredImpl implements ErrorOccurred {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -2766,6 +3209,8 @@ class _$ErrorOccurredImpl implements ErrorOccurred {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -2788,6 +3233,8 @@ class _$ErrorOccurredImpl implements ErrorOccurred {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -2810,6 +3257,8 @@ class _$ErrorOccurredImpl implements ErrorOccurred {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),
@@ -2848,12 +3297,20 @@ class __$$PhoneOTPVerifiedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PhoneOTPVerifiedImpl implements PhoneOTPVerified {
+class _$PhoneOTPVerifiedImpl
+    with DiagnosticableTreeMixin
+    implements PhoneOTPVerified {
   const _$PhoneOTPVerifiedImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.phoneOTPVerified()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.phoneOTPVerified'));
   }
 
   @override
@@ -2881,6 +3338,7 @@ class _$PhoneOTPVerifiedImpl implements PhoneOTPVerified {
     required TResult Function() logoutSuccess,
     required TResult Function(String message) logoutFailure,
     required TResult Function() phoneNumberSubmitted,
+    required TResult Function() phoneNumberSubmittedFailed,
     required TResult Function(String message) errorOccurred,
     required TResult Function() phoneOTPVerified,
   }) {
@@ -2903,6 +3361,7 @@ class _$PhoneOTPVerifiedImpl implements PhoneOTPVerified {
     TResult? Function()? logoutSuccess,
     TResult? Function(String message)? logoutFailure,
     TResult? Function()? phoneNumberSubmitted,
+    TResult? Function()? phoneNumberSubmittedFailed,
     TResult? Function(String message)? errorOccurred,
     TResult? Function()? phoneOTPVerified,
   }) {
@@ -2925,6 +3384,7 @@ class _$PhoneOTPVerifiedImpl implements PhoneOTPVerified {
     TResult Function()? logoutSuccess,
     TResult Function(String message)? logoutFailure,
     TResult Function()? phoneNumberSubmitted,
+    TResult Function()? phoneNumberSubmittedFailed,
     TResult Function(String message)? errorOccurred,
     TResult Function()? phoneOTPVerified,
     required TResult orElse(),
@@ -2951,6 +3411,8 @@ class _$PhoneOTPVerifiedImpl implements PhoneOTPVerified {
     required TResult Function(LogoutSuccess value) logoutSuccess,
     required TResult Function(LogoutFailure value) logoutFailure,
     required TResult Function(PhoneNumberSubmitted value) phoneNumberSubmitted,
+    required TResult Function(PhoneNumberSubmittedFailed value)
+        phoneNumberSubmittedFailed,
     required TResult Function(ErrorOccurred value) errorOccurred,
     required TResult Function(PhoneOTPVerified value) phoneOTPVerified,
   }) {
@@ -2973,6 +3435,8 @@ class _$PhoneOTPVerifiedImpl implements PhoneOTPVerified {
     TResult? Function(LogoutSuccess value)? logoutSuccess,
     TResult? Function(LogoutFailure value)? logoutFailure,
     TResult? Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult? Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult? Function(ErrorOccurred value)? errorOccurred,
     TResult? Function(PhoneOTPVerified value)? phoneOTPVerified,
   }) {
@@ -2995,6 +3459,8 @@ class _$PhoneOTPVerifiedImpl implements PhoneOTPVerified {
     TResult Function(LogoutSuccess value)? logoutSuccess,
     TResult Function(LogoutFailure value)? logoutFailure,
     TResult Function(PhoneNumberSubmitted value)? phoneNumberSubmitted,
+    TResult Function(PhoneNumberSubmittedFailed value)?
+        phoneNumberSubmittedFailed,
     TResult Function(ErrorOccurred value)? errorOccurred,
     TResult Function(PhoneOTPVerified value)? phoneOTPVerified,
     required TResult orElse(),

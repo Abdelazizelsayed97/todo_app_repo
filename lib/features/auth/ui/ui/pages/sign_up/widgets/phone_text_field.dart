@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl_phone_field/countries.dart';
@@ -8,8 +10,9 @@ class PhoneTextField extends StatelessWidget {
   final FocusNode focusNode = FocusNode();
   final TextEditingController controller;
   final void Function(PhoneNumber)? onChanged;
+  final FutureOr<String?> Function(PhoneNumber?)? validation;
 
-  PhoneTextField({super.key, required this.controller, this.onChanged});
+  PhoneTextField({super.key, required this.controller, this.onChanged, this.validation});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +35,7 @@ class PhoneTextField extends StatelessWidget {
         onCountryChanged: (country) {
           controller.clear();
         },
+        validator: validation,
         countries: const [
           Country(
               name: 'Egypt',

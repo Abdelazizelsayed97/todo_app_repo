@@ -35,9 +35,8 @@ class AuthCubit extends Cubit<AuthState> {
     if (result is Right) {
       emit(const AuthState.loginSuccess());
     } else {
-      emit(AuthState.loginFailure(result.foldLeft.toString()));
+      emit(const AuthState.loginFailure('failed to login'));
     }
-
     return result;
   }
 
@@ -57,58 +56,58 @@ class AuthCubit extends Cubit<AuthState> {
     final result = await _registrationUseCase.execute(input);
     result.fold(
       (l) {
-        emit(AuthState.registerFailure(l.message));
+        emit(const AuthState.registerFailure('Failed to register'));
       },
       (r) {
         emit(const AuthState.registerSuccess());
       },
     );
-    // if (result is Right) {
-    //
-    // } else {
-    //
-    // }
-
     return result;
   }
 
   Future<void> registerViaPhone(String number) async {
+    emit(const AuthState.registerLoading());
     await _registrationViaPhoneNumberUseCase.execute(
       number: number,
       verificationCompleted: (credential) async {
         await signIn(credential);
       },
       verificationFailed: (exception) {
-        if (kDebugMode) {
-          print('verificationFailed : ${exception.toString()}');
-        }
         emit(ErrorOccurred(exception.toString()));
       },
       codeSent: (verificationId, forceResendingToken) {
         this.verificationId = verificationId;
-        emit(const AuthState.phoneNumberSubmitted());
+
       },
       codeAutoRetrievalTimeout: (verificationId) {
         if (kDebugMode) {
           print('codeAutoRetrievalTimeout');
+
         }
+        emit(const AuthState.phoneNumberSubmitted());
       },
     );
   }
 
   Future<void> submitOTP(String otpCode) async {
+
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId, smsCode: otpCode);
-
     await signIn(credential);
   }
 
   Future<void> signIn(PhoneAuthCredential credential) async {
     try {
       await FirebaseAuth.instance.signInWithCredential(credential);
-      emit(const PhoneOTPVerified());
+      emit(
+        const PhoneOTPVerified(),
+      );
     } catch (error) {
-      emit(ErrorOccurred(error.toString()));
+      emit(
+        ErrorOccurred(
+          error.toString(),
+        ),
+      );
     }
   }
 }

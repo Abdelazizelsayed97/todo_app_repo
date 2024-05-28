@@ -4,16 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:second_task_todo_listapp/features/tusk/ui/pages/main_tasks_page.dart';
 
-import '../../../../../../core/app_text_field/app_text_field.dart';
 import '../../../../../../core/button_widget/button_wiget.dart';
 import '../../../../../../core/helper/spacing.dart';
 import '../../../../domain/entity/login_input.dart';
 import '../../../cubit/auth_cubit.dart';
+import '../login/widgets/email_and_password.dart';
 
 class RegisterViaEmailPage extends StatefulWidget {
   const RegisterViaEmailPage({super.key});
-
-  const RegisterViaEmailPage._();
 
   @override
   State<RegisterViaEmailPage> createState() => _RegisterViaEmailPageState();
@@ -56,6 +54,11 @@ class _RegisterViaEmailPageState extends State<RegisterViaEmailPage> {
         }
       },
       child: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            "Register by E-mail",
+          ),
+        ),
         body: SingleChildScrollView(
           padding: EdgeInsets.all(16.r),
           child: SafeArea(
@@ -67,24 +70,15 @@ class _RegisterViaEmailPageState extends State<RegisterViaEmailPage> {
                     filterQuality: FilterQuality.high,
                     alignment: Alignment.bottomCenter,
                     scale: 3,
-                    'lib/assets/images/pngwing.com.png'),
+                    'lib/assets/images/pngwing.png'),
                 verticalSpace(30),
-                AppTextField(
-                  controller: _emailController,
-                  label: 'E-mail',
+                EmailAndPasswordForm(
+                  email: _emailController,
+                  password: _passWordController,
                   onChanged: (p0) {
                     _isFilled();
                     setState(() {});
                   },
-                ),
-                verticalSpace(20),
-                AppTextField(
-                  onChanged: (p0) {
-                    _isFilled();
-                    setState(() {});
-                  },
-                  controller: _passWordController,
-                  label: 'Password',
                 ),
                 verticalSpace(20),
                 BlocBuilder<AuthCubit, AuthState>(

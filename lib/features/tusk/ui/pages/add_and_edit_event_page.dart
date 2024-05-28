@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,7 +36,7 @@ class _AddAndEditEventPageState extends State<AddAndEditEventPage> {
     _titleTextController.text = widget.data.title;
     _contextTextController.text = widget.data.eventContext;
     _selectedStatus = StatusEnum.values.firstWhere(
-      (status) => status.localizer == widget.data.status,
+          (status) => status.localizer == widget.data.status,
       orElse: () => StatusEnum.urgent,
     );
   }
@@ -81,6 +80,7 @@ class _AddAndEditEventPageState extends State<AddAndEditEventPage> {
   @override
   Widget build(BuildContext context) {
     return AddEditListener(
+
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -161,25 +161,24 @@ class _AddAndEditEventPageState extends State<AddAndEditEventPage> {
 
   void _addEventTask() {
     context.read<TusksCubit>().addEvent(
-          TaskEntity(
-            title: _titleTextController.text,
-            eventContext: _contextTextController.text,
-            date: DateFormat("E d MMM h:mm a").format(DateTime.now()),
-            status: _selectedStatus.localizer,
-          ),
-        );
+      TaskEntity(
+        title: _titleTextController.text,
+        eventContext: _contextTextController.text,
+        date: DateFormat("E d MMM h:mm a").format(DateTime.now()),
+        status: _selectedStatus.localizer,
+      ),
+    );
   }
 
   void _editEventTask() {
-    final User? credential = FirebaseAuth.instance.currentUser;
     context.read<TusksCubit>().editEvent(
-          input: TaskEntity(
-              title: _titleTextController.text,
-              eventContext: _contextTextController.text,
-              date: DateFormat("E d MMM h:mm a").format(DateTime.now()),
-              status: _selectedStatus.localizer,
-              id: credential?.uid),
-          collectionPath: credential!.uid,
-        );
+      input: TaskEntity(
+        title: _titleTextController.text,
+        eventContext: _contextTextController.text,
+        date: DateFormat("E d MMM h:mm a").format(DateTime.now()),
+        status: _selectedStatus.localizer,
+      ),
+      collectionPath: widget.data.id ?? '',
+    );
   }
 }
